@@ -6,3 +6,9 @@ from django.http import HttpResponse
 def home(request):
     return render(request,'shopping/home-page.html')
 
+def checkout(request):
+    return render(request,'shopping/checkout-page.html')
+
+def order(request):
+    return render(request,'shopping/product-page.html')
+
