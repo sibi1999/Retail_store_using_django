@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from shopping.models import item
 # Create your views here.
 
 def home(request):
-    return render(request,'shopping/home-page.html')
+    key=item.objects.all()
+    return render(request,'shopping/home-page.html',{'data':key})
 
 def checkout(request):
     return render(request,'shopping/checkout-page.html')
