@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 category_choices=[('S','SHIRT'),('SW','SHIRT WEAR'),('OW','OUT WEAR')]
-label_choices=[('P','PRIMARY'),('S','SEONDARY'),('D','DANGER')]
+label_choices=[('P','primary'),('S','secondary'),('D','danger')]
 class item(models.Model):
     '''name = models.CharField(max_length=20)
     lastname = models.CharField(max_length=200)
