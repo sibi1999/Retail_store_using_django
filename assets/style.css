@@ -1,0 +1,35 @@
+.outer {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: cyan;
+
+}
+.a {
+    height: 100px;
+    width: 100px;
+    background: red;
+}
+.a:hover {
+    cursor: pointer;
+}
+
+.b {
+    height: 100px;
+    width: 100px;
+    background: blue;
+}
+
+.b:hover {
+    cursor: pointer;
+}
+
+.f {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

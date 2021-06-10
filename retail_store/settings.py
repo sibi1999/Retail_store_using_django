@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shopping',
+    'cancellation',
 ]
 
 MIDDLEWARE = [
@@ -77,10 +78,14 @@ WSGI_APPLICATION = 'retail_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'djangotest',
+        'CLIENT': {
+           'host': 'mongodb+srv://mothi:mothi@cluster0.gxszc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        }
     }
 }
+
 
 
 # Password validation
@@ -120,6 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
