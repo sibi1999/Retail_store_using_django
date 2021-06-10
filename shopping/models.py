@@ -13,3 +13,5 @@ class item(models.Model):
     price=models.FloatField()
     category=models.CharField(choices=category_choices,max_length=2)
     label=models.CharField(choices=label_choices,max_length=2)
+
+    
