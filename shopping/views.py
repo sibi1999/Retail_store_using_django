@@ -126,8 +126,8 @@ def add_to_cart(request, slug):
 
 def checkout(request):
     all_items=OrderItem.objects.all()
-    overall_sum=all_items.aggregate(Sum('sub_total'))
-    return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
+    overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
+    return render(request,'shopping/checkout-page.html',{'data':all_items,'total':overall_sum})
     
 
 
