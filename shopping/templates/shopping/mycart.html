@@ -4,12 +4,7 @@
 
 {% block content %}
 
-{{data}}
 
-{% for i in data%}
-{{i.item.title}}
-{{i.quantity}}
-{%endfor%}
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -35,8 +30,7 @@
                         <td>{{cp.quantity}}</td>
                         <td>{{cp.sub_total}}</td>
                         <td>
-                            hola hola
-                            {{cp.id}}
+                            
                             <a href="{% url 'shopping:inc' cp.id %}" class="btn btn-primary"> + </a>
                             <a href="{% url 'shopping:dcr' cp.id %}" class="btn btn-warning"> - </a>
                             <a href="{% url 'shopping:rmv' cp.id %}" class="btn btn-danger"> x </a>
@@ -46,15 +40,13 @@
                     <tr>
                         <th colspan="4" class="text-right">Total</th>
                         <th>{{total}}</th>
-                        {% if cart.cartproduct_set.all %}
-                        <th><a href="#">Empty Cart</a></th>
-                        {% endif %}
+                      
                     </tr>
-                    {% if cart.cartproduct_set.all %}
+                   
                     <tr>
-                        <th><a class="btn btn-info" href="{% url 'ecomapp:checkout' %}"> Checkout </a></th>
+                        <th><a class="btn btn-info" href="{% url 'shopping:checkout' %}"> Checkout </a></th>
                     </tr>
-                    {% endif %}
+              
                 </tbody>
             </table>
         </div>

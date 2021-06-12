@@ -59,7 +59,7 @@ def inc(request,pk):
         cp_obj.sub_total= cp_obj.item.price * cp_obj.quantity  
     cp_obj.save()
     all_items=OrderItem.objects.all()
-    overall_sum=all_items.aggregate(Sum('sub_total'))
+    overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
     return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
 
 
@@ -72,7 +72,7 @@ def dcr(request,pk):
         cp_obj.sub_total= cp_obj.item.price * cp_obj.quantity  
     cp_obj.save()
     all_items=OrderItem.objects.all()
-    overall_sum=all_items.aggregate(Sum('sub_total'))
+    overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
     return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
 
 
@@ -81,7 +81,7 @@ def rmv(request,pk):
     cp_obj.delete()
     
     all_items=OrderItem.objects.all()
-    overall_sum=all_items.aggregate(Sum('sub_total'))
+    overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
     return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
     
 
