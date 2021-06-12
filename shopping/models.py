@@ -33,11 +33,13 @@ class Item(models.Model):
         
 
 class OrderItem(models.Model):
-    id = models.AutoField(primary_key=True)
+
+    id = models.IntegerField(primary_key=True,unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    sub_total=models.IntegerField(default=0)
     
 
     def __str__(self):

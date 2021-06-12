@@ -1,10 +1,11 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from shopping.models import Item,OrderItem
+from django.db.models import Sum
 from django.views.generic import ListView,DetailView,View
 # Create your views here.
 
-
+id=0
 
 class HomeView(ListView):
     model=Item 
@@ -17,65 +18,69 @@ class ItemDetailView(DetailView):
 
 
 def add_to_cart(request,pk):
-    item=get_object_or_404(Item,pk=pk)
-    cart=OrderItem()
- 
-    cart.item=item
-    cart.user=request.user
-    cart.quantity=1 
-    cart.ordered= False
-    cart.save()
+    global id
+    id=id+1
+    print(id)
+    try:
+        item=get_object_or_404(Item,pk=pk)
+        cart=OrderItem()
+        cart.id=id
+        cart.item=item
+        cart.user=request.user
+        cart.quantity=1
+        if cart.item.discount_price:
+            cart.sub_total= cart.item.discount_price * cart.quantity    
+        else:
+            cart.sub_total= cart.item.price * cart.quantity  
+
+        cart.ordered= False
+        cart.save()
+
+    except:
+        pass
     return render(request,'shopping/product-page.html')
 
 
 def cart(request):
-    print("hi","\n"*10)
 
     all_items=OrderItem.objects.all()
-    print("all",all_items)
+    overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
+    return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
+
+
+
+
+def inc(request,pk):
+    cp_obj = OrderItem.objects.get(id=pk)
+    cp_obj.quantity += 1
+    if cp_obj.item.discount_price:
+            cp_obj.sub_total= cp_obj.item.discount_price * cp_obj.quantity    
+    else:
+        cp_obj.sub_total= cp_obj.item.price * cp_obj.quantity  
+    cp_obj.save()
+    all_items=OrderItem.objects.all()
+    overall_sum=all_items.aggregate(Sum('sub_total'))
+    return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
+
+
+def dcr(request,pk):
+    cp_obj = OrderItem.objects.get(id=pk)
+    cp_obj.quantity -= 1
+    if cp_obj.item.discount_price:
+            cp_obj.sub_total= cp_obj.item.discount_price * cp_obj.quantity    
+    else:
+        cp_obj.sub_total= cp_obj.item.price * cp_obj.quantity  
+    cp_obj.save()
+    all_items=OrderItem.objects.all()
     return render(request,'shopping/mycart.html',{'data':all_items})
 
 
-
-class ManageCartView(View):
-    def get(self, request, *args, **kwargs):
-        slug = self.kwargs["slug"]
-        action = request.GET.get("action")
-        cp_obj = OrderItem.objects.all().filter(item__slug=slug)
-        
+def rmv(request,pk):
+    cp_obj = OrderItem.objects.get(id=pk)
+    cp_obj.delete()
     
-
-
-        if action == "inc":
-            cp_obj.quantity += 1
-            #cp_obj.subtotal += cp_obj.rate
-            cp_obj.save()
-            #cart_obj.total += cp_obj.rate
-            cart_obj.save()
-        '''
-        elif action == "dcr":
-            cp_obj.quantity -= 1
-            cp_obj.subtotal -= cp_obj.rate
-            cp_obj.save()
-            cart_obj.total -= cp_obj.rate
-            cart_obj.save()
-            if cp_obj.quantity == 0:
-                cp_obj.delete()
-
-        elif action == "rmv":
-            cart_obj.total -= cp_obj.subtotal
-            cart_obj.save()
-            cp_obj.delete()
-        else:
-            pass
-        return redirect("ecomapp:mycart")
-
-
-
-'''
-
-
-
+    all_items=OrderItem.objects.all()
+    return render(request,'shopping/mycart.html',{'data':all_items})
 
 
 
@@ -115,12 +120,13 @@ def add_to_cart(request, slug):
 
 
 
-'''
+
 def checkout(request):
-    return render(request,'shopping/checkout-page.html')
+    all_items=OrderItem.objects.all()
+    return render(request,'shopping/checkout-page.html',{'data':all_items})
 
 
-'''
+
 def order(request):
     return render(request,'shopping/product-page.html')
 
