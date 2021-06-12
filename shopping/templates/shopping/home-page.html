@@ -317,7 +317,7 @@
 
         <div class="row wow fadeIn">
         
-          {% for item in data %}
+          {% for item in object_list %}
           <div class="col-lg-3 col-md-6 mb-4">
 
             <div class="card">
@@ -345,8 +345,16 @@
 
                 <h4 class="font-weight-bold blue-text">
                   <strong>$
+                  {%if item.discount_price%}
                   
+                  {{ item.discount_price }}
+
+                  {%else%}
+
                   {{ item.price }}
+
+                  {%endif%}
+
                 
                   </strong>
                 </h4>

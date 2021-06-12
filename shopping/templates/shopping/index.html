@@ -3,7 +3,10 @@
 {% load static  %}
 
 {% block content  %}
-<img src="{% static 'shopping/naruto.jpg' %}">
-<h1>Rangola Hola Hola </h1>
+
+{% for i in data%}
+{{i.item.title}}
+{{i.quantity}}
+{%endfor%}
 
 {% endblock content %}

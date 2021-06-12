@@ -74,8 +74,11 @@ WSGI_APPLICATION = 'retail_store.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'shopping',
+        'CLIENT': {
+           'host': 'mongodb+srv://sibi:12345sibi@cluster0.afeaz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        }
     }
 }
 
