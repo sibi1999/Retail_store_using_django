@@ -1,14 +1,14 @@
-{% extends 'base.html' %}
 
-{% block title %} My cart{% endblock %}
+{% extends 'shopping/base.html' %}
+{%load static%}
 
 {% block content %}
-
-
-<div class="container">
+<div class="container" style:>
     <div class="row">
         <div class="col-md-8">
-            <h4>Items in my cart</h4><hr>
+            
+            <h1 style="color:lawngreen"><b>Items in the Cart are</b></h1>
+            
             <table class="table">
                 <thead>
                     <tr>
@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {data}
+                   
                     {% for cp in data %}
                     <tr>
                         <td>{{forloop.counter}}</td>
@@ -52,4 +52,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{%endblock content%}

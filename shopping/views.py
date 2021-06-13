@@ -3,10 +3,14 @@ from django.http import HttpResponse
 from shopping.models import Item,OrderItem,ConfirmedTicket
 from django.db.models import Sum
 from django.views.generic import ListView,DetailView,View
+from django.contrib import messages
 # Create your views here.
 
 id=0
 
+
+def test(request):
+    return render(request,'shopping/index.html')
 class HomeView(ListView):
     model=Item 
     template_name="shopping/home-page.html"
@@ -21,6 +25,7 @@ def add_to_cart(request,pk):
     global id
     id=id+1
     print(id)
+    
     try:
         item=get_object_or_404(Item,pk=pk)
         cart=OrderItem()
@@ -38,13 +43,15 @@ def add_to_cart(request,pk):
 
     except:
         pass
-    return render(request,'shopping/product-page.html')
+    messages.info(request, 'Product Added to cart successfully')
+    return redirect('shopping:home')
 
 
 def cart(request):
 
     all_items=OrderItem.objects.all()
     overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
+    
     return render(request,'shopping/mycart.html',{'data':all_items,'total':overall_sum})
 
 

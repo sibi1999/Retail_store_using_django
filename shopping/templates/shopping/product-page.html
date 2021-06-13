@@ -1,21 +1,9 @@
+{%extends 'shopping/base.html'%}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'shopping/css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="{% static 'shopping/css/mdb.min.css' %}" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="{% static 'shopping/css/style.min.css'%}" rel="stylesheet">
-</head>
+{%block content%}
 
 <body>
 
@@ -99,8 +87,8 @@
 
         <!--Grid column-->
         <div class="col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+          
+          <img src="{{object.img_url}}" class="img-fluid" alt="img" width="400" height="150">
 
         </div>
         <!--Grid column-->
@@ -292,5 +280,7 @@
 
   </script>
 </body>
+
+{%endblock content%}
 
 </html>
