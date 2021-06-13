@@ -1,6 +1,6 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
-from shopping.models import Item,OrderItem
+from shopping.models import Item,OrderItem,ConfirmedTicket
 from django.db.models import Sum
 from django.views.generic import ListView,DetailView,View
 # Create your views here.
@@ -133,5 +133,44 @@ def checkout(request):
 
 
 def order(request):
-    return render(request,'shopping/product-page.html')
+    #ticket=ConfirmedTicket()
+    name=request.POST.get('firstName')+request.POST.get('lastName')
+    email=request.POST.get('email')
+    address=request.POST.get('address')
+    country=request.POST.get('country')
+    state=request.POST.get('state')
+    zip=request.POST.get('zip')
+    all_items=OrderItem.objects.all()
+    
+    for i in all_items:
+        ticket=ConfirmedTicket()
+        try:
+            ticket.id=ConfirmedTicket.objects.all()[-1].id+1
+        except:
+            ticket.id=i.id
+        ticket.name=name 
+        ticket.user=i.user
+        ticket.email=email  
+        ticket.address=address 
+        ticket.state=state 
+        ticket.zip=zip
+        ticket.product_name=i.item.title 
+        ticket.product_price=i.sub_total 
+        ticket.quantity=i.quantity 
+        ticket.save()
+    all_items.delete()
+
+    # ticket.name=
+    # ticket.email=email
+
+    print(name)
+    print(request.POST)
+
+
+
+    print("\n"*10)
+    print(request.POST['address'])
+            
+    return redirect('shopping:home')
+        
 

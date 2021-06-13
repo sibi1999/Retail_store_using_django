@@ -46,4 +46,20 @@ class OrderItem(models.Model):
         return f"{self.item.title} by {self.user}"
 
 
+class ConfirmedTicket(models.Model):
+    id = models.IntegerField(primary_key=True,unique=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    name=models.CharField(max_length=1000)
+    email=models.CharField(max_length=1000)
+    country=models.CharField(max_length=1000)
+    state=models.CharField(max_length=1000)
+    zip=models.CharField(max_length=1000)
+    address=models.CharField(max_length=1000)
+    product_name=models.CharField(max_length=1000)
+    product_price= models.IntegerField(default=1)
+    quantity = models.IntegerField(default=1)
+    
+
+
+
     

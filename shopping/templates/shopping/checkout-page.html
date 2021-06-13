@@ -105,7 +105,8 @@
           <div class="card">
 
             <!--Card content-->
-            <form class="card-body">
+            <form class="card-body" method="post" action="{%url 'shopping:order' %}">
+              {%csrf_token%}
 
               <!--Grid row-->
               <div class="row">
@@ -115,7 +116,7 @@
 
                   <!--firstName-->
                   <div class="md-form ">
-                    <input type="text" id="firstName" class="form-control">
+                    <input type="text" name="firstName" id="firstName" class="form-control">
                     <label for="firstName" class="">First name</label>
                   </div>
 
@@ -127,7 +128,7 @@
 
                   <!--lastName-->
                   <div class="md-form">
-                    <input type="text" id="lastName" class="form-control">
+                    <input type="text" name="lastName" id="lastName" class="form-control">
                     <label for="lastName" class="">Last name</label>
                   </div>
 
@@ -137,32 +138,21 @@
               </div>
               <!--Grid row-->
 
-              <!--Username-->
-              <div class="md-form input-group pl-0 mb-5">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                <input type="text" class="form-control py-0" placeholder="Username" aria-describedby="basic-addon1">
-              </div>
+             
 
               <!--email-->
               <div class="md-form mb-5">
-                <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
-                <label for="email" class="">Email (optional)</label>
+                <input type="text" name="email" id="email" class="form-control" >
+                <label for="email" class="">Email</label>
               </div>
 
               <!--address-->
               <div class="md-form mb-5">
-                <input type="text" id="address" class="form-control" placeholder="1234 Main St">
+                <input type="text" id="address" class="form-control" name="address">
                 <label for="address" class="">Address</label>
               </div>
 
-              <!--address-2-->
-              <div class="md-form mb-5">
-                <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
-                <label for="address-2" class="">Address 2 (optional)</label>
-              </div>
-
+          
               <!--Grid row-->
               <div class="row">
 
@@ -170,9 +160,10 @@
                 <div class="col-lg-4 col-md-12 mb-4">
 
                   <label for="country">Country</label>
-                  <select class="custom-select d-block w-100" id="country" required>
+                  <select class="custom-select d-block w-100" name="country" id="country" required>
                     <option value="">Choose...</option>
                     <option>United States</option>
+                    <option>India</option>
                   </select>
                   <div class="invalid-feedback">
                     Please select a valid country.
@@ -185,9 +176,10 @@
                 <div class="col-lg-4 col-md-6 mb-4">
 
                   <label for="state">State</label>
-                  <select class="custom-select d-block w-100" id="state" required>
+                  <select class="custom-select d-block w-100" name="state" id="state" required>
                     <option value="">Choose...</option>
-                    <option>California</option>
+                    <option>Tamilnadu</option>
+                    <option>Kerala</option>
                   </select>
                   <div class="invalid-feedback">
                     Please provide a valid state.
@@ -200,7 +192,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
 
                   <label for="zip">Zip</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <input type="text" class="form-control" name="zip" id="zip" placeholder="" required>
                   <div class="invalid-feedback">
                     Zip code required.
                   </div>

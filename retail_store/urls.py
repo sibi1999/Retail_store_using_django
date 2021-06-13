@@ -23,9 +23,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
    
     path('admin/', admin.site.urls),
-    path('accounts/',include('accounts.urls')),
+    path('',include('accounts.urls')),
   
-    path('',include('shopping.urls'))
+    path('shopping/',include('shopping.urls'))
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()

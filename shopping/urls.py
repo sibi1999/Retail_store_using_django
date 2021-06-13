@@ -8,6 +8,7 @@ app_name='shopping'
 urlpatterns = [
      path('',HomeView.as_view(),name="home"),
      path('product/<int:pk>/',ItemDetailView.as_view(),name="item_view"),
+     path('order/',order,name='order'),
    
     
     path('checkout',checkout,name="checkout"),
