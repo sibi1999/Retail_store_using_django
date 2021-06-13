@@ -20,6 +20,7 @@ class Item(models.Model):
     label=models.CharField(choices=label_choices,max_length=2)
     slug=models.SlugField()
     description= models.TextField()
+    img_url=models.CharField(max_length=1000)
 
 
     def __str__(self):
@@ -54,7 +55,7 @@ class ConfirmedTicket(models.Model):
     country=models.CharField(max_length=1000)
     state=models.CharField(max_length=1000)
     zip=models.CharField(max_length=1000)
-    address=models.CharField(max_length=1000)
+    address=models.CharField(max_length=1000,default="a")
     product_name=models.CharField(max_length=1000)
     product_price= models.IntegerField(default=1)
     quantity = models.IntegerField(default=1)
