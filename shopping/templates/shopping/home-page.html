@@ -203,7 +203,7 @@
           <!-- Links -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">All
+              <a class="nav-link" href="{% url 'shopping:home'%}">All
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -243,7 +243,7 @@
 
               <div class="view overlay">
                 {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
-                <img src="{{item.img_url}}" class="card-img-top"
+                <img src="{{item.img_url}}" class="card-img-top" height = "250px" width = "200px"
                 alt="">
               <a>
                 <div class="mask rgba-white-slight"></div>

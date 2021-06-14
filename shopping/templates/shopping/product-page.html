@@ -65,7 +65,7 @@
             </form>
             {%endcomment%}
 
-            <a href="{{object.get_add_to_cart}}" class="btn btn-primary btn-md my-0 p">Add to Cart </a>
+            <a onclick="productadded()" href="{{object.get_add_to_cart}}" class="btn btn-primary btn-md my-0 p" >Add to Cart </a>
 
           </div>
           <!--Content-->
@@ -143,6 +143,12 @@
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+    
+  function productadded() {
+    console.log('asldfj');
+    alert('Product added to cart!!');
+  }
+
 
   </script>
 </body>

@@ -15,7 +15,7 @@ def test(request):
 class HomeView(ListView):
     model=Item 
     template_name="shopping/home-page.html"
-    paginate_by = 4
+    paginate_by = 8
 
 
 
@@ -138,7 +138,8 @@ def add_to_cart(request, slug):
 def checkout(request):
     all_items=OrderItem.objects.all()
     overall_sum=all_items.aggregate(Sum('sub_total'))['sub_total__sum']
-    return render(request,'shopping/checkout-page.html',{'data':all_items,'total':overall_sum})
+    l = len(all_items)
+    return render(request,'shopping/checkout-page.html',{'data':all_items,'total':overall_sum, 'l': l})
     
 
 

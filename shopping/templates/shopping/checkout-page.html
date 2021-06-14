@@ -182,7 +182,7 @@
                 </div>
               </div>
               <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+              <button onclick="placeorder()" class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
 
             </form>
 
@@ -197,8 +197,8 @@
 
           <!-- Heading -->
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">2</span>
-            <span class="badge badge-secondary badge-pill">3</span>
+            <span class="text-muted"></span>
+            <span class="badge badge-secondary badge-pill">{{l}}</span>
           </h4>
 
           <!-- Cart -->
@@ -287,6 +287,11 @@
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+    
+  function placeorder() {
+    alert('Your order has been placed!!');
+  }
+
   </script>
 </body>
 {%endblock content%}

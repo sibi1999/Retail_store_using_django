@@ -6,7 +6,7 @@ from django.shortcuts import reverse
 from django.conf import settings
 # Create your models here.
 
-category_choices=[('S','SHIRT'),('SW','SHIRT WEAR'),('OW','OUT WEAR')]
+category_choices=[('S','SHIRT'),('SW','SPORT WEAR'),('OW','OUT WEAR')]
 label_choices=[('P','primary'),('S','secondary'),('D','danger')]
 class Item(models.Model):
     '''name = models.CharField(max_length=20)
