@@ -5,6 +5,7 @@ from django.db.models import Sum
 from django.views.generic import ListView,DetailView,View
 from django.contrib import messages
 import datetime
+import smtplib
 # Create your views here.
 
 id=0
@@ -171,6 +172,15 @@ def order(request):
         ticket.quantity=i.quantity 
         ticket.date = datetime.datetime.now()
         ticket.save()
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        
+        
+        
+        message = 'Your order ' + ticket.product_name + ' has been placed!!'
+        server.login('abirami.prodapt@gmail.com', 'Abirami103$')
+        server.sendmail('abirami.prodapt@gmail.com', email, message)
+        
     all_items.delete()
 
     # ticket.name=
