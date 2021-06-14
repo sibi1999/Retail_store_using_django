@@ -47,7 +47,7 @@ def add_to_cart(request,pk):
 
     except:
         pass
-    messages.info(request, 'Product Added to cart successfully')
+    
     return redirect('shopping:home')
 
 

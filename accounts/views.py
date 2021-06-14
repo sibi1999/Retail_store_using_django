@@ -35,5 +35,6 @@ def login_view(request):
 def logout_view(request):
     if request.method=='POST':
         logout(request)
-        return render(request,'login/index2.html')
+        # return render(request,'login/index2.html')
+        return redirect('accounts:login')
 
