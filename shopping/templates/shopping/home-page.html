@@ -46,6 +46,8 @@
     }
 
   </style>
+
+{%block title%}STAR KART ⭐{%endblock title %}
 </head>
 
 <body>
@@ -206,7 +208,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Shirts</a>
+              <a class="nav-link" href="{% url 'shopping:home'%}?action=shirt">Shirts</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Sport wears</a>

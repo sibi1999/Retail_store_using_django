@@ -16,6 +16,8 @@ class HomeView(ListView):
     template_name="shopping/home-page.html"
 
 
+
+
 class ItemDetailView(DetailView):
     model=Item 
     template_name="shopping/product-page.html"
