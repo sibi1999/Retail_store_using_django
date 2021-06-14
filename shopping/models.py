@@ -50,6 +50,7 @@ class OrderItem(models.Model):
 class ConfirmedTicket(models.Model):
     id = models.IntegerField(primary_key=True,unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
     name=models.CharField(max_length=1000)
     email=models.CharField(max_length=1000)
     country=models.CharField(max_length=1000)
@@ -59,6 +60,10 @@ class ConfirmedTicket(models.Model):
     product_name=models.CharField(max_length=1000)
     product_price= models.IntegerField(default=1)
     quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.product_name} by {self.user}"
+
     
 
 

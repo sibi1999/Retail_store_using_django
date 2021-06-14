@@ -1,0 +1,97 @@
+.cancel-main {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  align-items: center;
+}
+.main-heading {
+  position: absolute;
+  top: 12%;
+  left: 2%;
+}
+.box {
+  height: 250px;
+  width: 600px;
+  margin: 25px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgb(173, 173, 173);
+  color: #ffffff;
+  transition: box-shadow .5s ease-in-out, transform .2s ease-in-out;
+}
+.box:hover {
+  transform: scale(1.03);
+  box-shadow: 5px 5px 10px rgb(173, 173, 173);
+}
+
+.product-name {
+  position: relative;
+  top: 10%;
+  left: 5%;
+}
+
+.product-date {
+  position: relative;
+  top: 15%;
+  left: 5%;
+}
+
+.product-form {
+  position: relative;
+  top: 25%;
+  left: 0%;
+}
+
+.inner-box {
+  position: relative;
+  bottom: 0%;
+  height: 100px;
+  width: 600px;
+  background: linear-gradient(
+    0deg
+    , #d18cb4, #ffd940);
+  border-radius: 50% 50% 0px 0px;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path .5s ease-in-out;
+}
+
+.cancel-icon {
+  position: relative;
+  background: inherit;
+  border: none;
+  color: inherit;
+  font-size: 30px;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px 0px 10px 0px;
+  border: solid white 1px;
+}
+
+
+.card-1 {
+  background: radial-gradient(#1fe4f5, #3fbafe);
+}
+
+.card-2 {
+  background: radial-gradient(#fbc1cc, #fa99b2);
+}
+
+.card-3 {
+  background: radial-gradient(#76b2fe, #b69efe);
+}
+
+.card-4 {
+  background: radial-gradient(#60efbc, #58d5c9);
+}
+
+.card-5 {
+  background: radial-gradient(#f588d8, #c0a3e5);
+}
+
+
+body {
+  background: blanchedalmond;
+}

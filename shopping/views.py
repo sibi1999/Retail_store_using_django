@@ -4,6 +4,7 @@ from shopping.models import Item,OrderItem,ConfirmedTicket
 from django.db.models import Sum
 from django.views.generic import ListView,DetailView,View
 from django.contrib import messages
+import datetime
 # Create your views here.
 
 id=0
@@ -166,6 +167,7 @@ def order(request):
         ticket.product_name=i.item.title 
         ticket.product_price=i.sub_total 
         ticket.quantity=i.quantity 
+        ticket.date = datetime.datetime.now()
         ticket.save()
     all_items.delete()
 
