@@ -15,6 +15,7 @@ def test(request):
 class HomeView(ListView):
     model=Item 
     template_name="shopping/home-page.html"
+    paginate_by = 4
 
 
 
